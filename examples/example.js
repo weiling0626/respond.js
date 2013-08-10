@@ -11,7 +11,7 @@ $(document).ready(function() {
     }).responsive({
         when: {
             height: function(h) {
-                return parseInt(h, 10) > 80;
+                return parseInt(h, 10) > 105;
             },
         },
         set: {
@@ -23,5 +23,10 @@ $(document).ready(function() {
     $('#increase').on('click', function() {
         $('#responsive').css('width', parseInt($('#responsive').css('width'), 10) + 10);
         $('#responsive').css('height', parseInt($('#responsive').css('height'), 10) + 15);
+    });
+
+    $('#decrease').on('click', function() {
+        $('#responsive').css('width', parseInt($('#responsive').css('width'), 10) - 10);
+        $('#responsive').css('height', parseInt($('#responsive').css('height'), 10) - 15);
     });
 });

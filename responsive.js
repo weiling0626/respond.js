@@ -1,12 +1,8 @@
 (function($) {
     var jqCss = $.fn.css;
-    var selectors = [{
-        when: {},
-        set: {}
-    }];
 
     var respond = function(event, element) {
-        var that = this;
+        var that = $(event.target);
         var applied = true;
         var styles = window.getComputedStyle(event.target);
 
@@ -17,19 +13,23 @@
         });
         if(applied) {
             $.each(element.set, function(key, value) {
-                console.log(key, value);
-                jqCss.apply(that, [key, value]);
+                return jqCss.apply(that, [key, value]);
             });
         }
+        return $(event.target);
     };
 
     $.fn.css = function() {
-        $(this).trigger('respond', this);
+        $(this).trigger('respond');
         return jqCss.apply(this, arguments);
     };
 
     $.fn.responsive = function() {
         var that = this;
+
+        $(that).bind('resize', function(event) {
+            $(that).trigger('respond');
+        });
 
         $.each(arguments, function(index, element) {
             if(element.when && element.set) {
