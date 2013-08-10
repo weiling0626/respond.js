@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#responsive').responsive({
+    $('#responsive').respond({
         when: { // 'when' must return a function that evaluates true/false
             width: function(w) {
                 return parseInt(w, 10) > 50;
@@ -8,7 +8,7 @@ $(document).ready(function() {
         set: { // 'set' is an object of properties to apply
             'background-color': '#f00',
         }
-    }).responsive({
+    }).respond({
         when: {
             height: function(h) {
                 return parseInt(h, 10) > 105;

@@ -24,7 +24,7 @@
         return jqCss.apply(this, arguments);
     };
 
-    $.fn.responsive = function() {
+    $.fn.respond = function() {
         var that = this;
 
         $(that).bind('resize', function(event) {
